@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رشيد للأعلاف(rosetta) | أعلاف أبقار عالية الجودة</title>
+    <script src="https://cdn.tailwindcss.com/3.4.1"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/tajawal@5.0.19/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1E6576',
+                        secondary: '#257a8e',
+                        accent: '#f4a261',
+                        dark: '#1a1a1a',
+                        light: '#f8f9fa',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Tajawal', sans-serif; }
+        html { scroll-behavior: smooth; }
+        .hero-bg {
+            background: linear-gradient(135deg, #1E6576 0%, rgba(26, 26, 26, 0.7) 100%),
+                        url('https://image.qwenlm.ai/public_source/735e3668-29dd-48c9-b022-702a3229994c/1d66987fd-02cb-9286-88c8-5d5a93d91bf1.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .factory-bg {
+            background: linear-gradient(135deg, #1E6576 0%, rgba(26, 26, 26, 0.8) 100%),
+                        url('https://image.qwenlm.ai/public_source/735e3668-29dd-48c9-b022-702a3229994c/15361742f-f095-4eee-b822-681bf7dd9942.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .product-card:hover .product-img { transform: scale(1.08); }
+        .product-img { transition: transform 0.5s ease; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: #f4a261;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-anim { animation: float 3s ease-in-out infinite; }
+        .counter { font-variant-numeric: tabular-nums; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #1E6576; border-radius: 5px; }
+    </style>
+</head>
+<body class="bg-light text-dark overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#home" class="flex items-center gap-3">
+                    <img src="logo.jpg" alt="شعار رشيد للأعلاف(rosetta)" class="h-12 w-auto object-contain">
+                    <div class="hidden sm:block">
+                        <h1 class="text-xl font-bold text-primary leading-tight">رشيد</h1>
+                        <p class="text-xs text-gray-500">للأعلاف</p>
+                    </div>
+                </a>
+
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-primary font-medium transition">الرئيسية</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-primary font-medium transition">عن الشركة</a>
+                    <a href="#why-us" class="nav-link text-gray-700 hover:text-primary font-medium transition">لماذا نحن</a>
+                    <a href="#products" class="nav-link text-gray-700 hover:text-primary font-medium transition">منتجاتنا</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 hover:text-primary font-medium transition">آراء العملاء</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-primary font-medium transition">تواصل معنا</a>
+                </div>
+
+                <div class="hidden lg:flex items-center gap-4">
+                    <a href="tel:01000000000" class="flex items-center gap-2 text-primary font-bold">
+                        <i class="fas fa-phone"></i>
+                        <span>01000000000</span>
+                    </a>
+                    <a href="#contact" class="bg-primary hover:bg-secondary text-white px-6 py-2.5 rounded-full font-medium transition shadow-lg hover:shadow-xl">
+                        اطلب عرض سعر
+                    </a>
+                </div>
+
+                <button id="mobile-menu-btn" class="lg:hidden text-2xl text-primary">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100">
+            <div class="container mx-auto px-4 py-4 flex flex-col gap-3">
+                <a href="#home" class="py-2 text-gray-700 hover:text-primary font-medium border-b border-gray-50">الرئيسية</a>
+                <a href="#about" class="py-2 text-gray-700 hover:text-primary font-medium border-b border-gray-50">عن الشركة</a>
+                <a href="#why-us" class="py-2 text-gray-700 hover:text-primary font-medium border-b border-gray-50">لماذا نحن</a>
+                <a href="#products" class="py-2 text-gray-700 hover:text-primary font-medium border-b border-gray-50">منتجاتنا</a>
+                <a href="#testimonials" class="py-2 text-gray-700 hover:text-primary font-medium border-b border-gray-50">آراء العملاء</a>
+                <a href="#contact" class="py-2 text-gray-700 hover:text-primary font-medium">تواصل معنا</a>
+                <a href="#contact" class="bg-primary text-white text-center py-3 rounded-full font-medium mt-2">اطلب عرض سعر</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center relative pt-20">
+        <div class="container mx-auto px-4 lg:px-8 py-20">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full mb-6 border border-white/30">
+                    <i class="fas fa-award text-accent"></i>
+                    <span class="text-sm font-medium">أكثر من 20 عامًا من الخبرة في تغذية الأبقار</span>
+                </div>
+
+                <!-- Company Name -->
+                <div class="mb-4">
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight">
+                        رشيد للأعلاف
+                    </h1>
+                    <p class="text-accent text-2xl md:text-3xl font-semibold tracking-widest mt-1">Rosetta</p>
+                </div>
+
+                <!-- Slogan -->
+                <div class="inline-flex items-center gap-3 mb-8">
+                    <span class="w-10 h-px bg-accent"></span>
+                    <p class="text-accent text-xl md:text-2xl font-bold italic">الثقة في كل حبّة</p>
+                    <span class="w-10 h-px bg-accent"></span>
+                </div>
+
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <a href="#products" class="bg-accent hover:bg-orange-500 text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-2xl hover:shadow-accent/50 flex items-center gap-2">
+                        <span>استكشف منتجاتنا</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <a href="#contact" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white border-2 border-white/30 px-8 py-4 rounded-full font-bold text-lg transition flex items-center gap-2">
+                        <i class="fas fa-phone"></i>
+                        <span>تواصل معنا</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-8 border-t border-white/20">
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-accent counter" data-target="20">0</div>
+                        <div class="text-white/80 text-sm mt-1">سنة خبرة</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-accent counter" data-target="500">0</div>
+                        <div class="text-white/80 text-sm mt-1">عميل راضٍ</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-accent counter" data-target="15">0</div>
+                        <div class="text-white/80 text-sm mt-1">نوع علف متخصص</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl md:text-4xl font-bold text-accent">24/7</div>
+                        <div class="text-white/80 text-sm mt-1">دعم فني</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 lg:py-28 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="fade-in">
+                    <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">
+                        <i class="fas fa-info-circle ml-2"></i>من نحن
+                    </div>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-6 leading-tight">
+                        رشيد للأعلاف(rosetta)
+                        <br><span class="text-primary">رائدة في تغذية الأبقار</span>
+                    </h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        رشيد للأعلاف(rosetta) من الشركات الرائدة في مجال تصنيع وتوزيع أعلاف الأبقار عالية الجودة في مصر. نختص في تغذية جميع سلالات الأبقار — الحلابة منها والتسمين والعجول — ونسعى دائمًا لتقديم أفضل المنتجات التي تضمن صحة وإنتاجية قطيعك.
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        نعمل بخبرة تزيد على عشرين عامًا في توفير حلول غذائية متكاملة لمزارع الأبقار والمربّين في مختلف أنحاء مصر، ونلتزم بأعلى معايير الجودة والأمان الغذائي. تعتمد شركتنا على مواد خام طبيعية مختارة بعناية فائقة، وتركيبات علمية معتمدة من أطباء بيطريين ومختصين في تغذية الأبقار.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary text-xl"></i>
+                            <span class="font-medium">مواد خام طبيعية 100%</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary text-xl"></i>
+                            <span class="font-medium">إشراف بيطري كامل</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary text-xl"></i>
+                            <span class="font-medium">شهادات جودة معتمدة</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-check-circle text-primary text-xl"></i>
+                            <span class="font-medium">توصيل لجميع المحافظات</span>
+                        </div>
+                    </div>
+
+                    <a href="#contact" class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-3.5 rounded-full font-bold transition shadow-lg">
+                        <span>تعرف على منتجاتنا</span>
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <div class="fade-in relative">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                        <img src="https://image.qwenlm.ai/public_source/735e3668-29dd-48c9-b022-702a3229994c/15361742f-f095-4eee-b822-681bf7dd9942.png" alt="مصنع رشيد للأعلاف(rosetta)" class="w-full h-[500px] object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+                    </div>
+                    <!-- <div class="absolute -bottom-6 -right-6 bg-accent text-white p-6 rounded-2xl shadow-2xl float-anim hidden md:block">
+                        <div class="text-4xl font-bold">+20</div>
+                        <div class="text-sm">عامًا من التميز</div>
+                    </div>
+                    <div class="absolute -top-6 -left-6 bg-white p-4 rounded-2xl shadow-xl hidden md:flex items-center gap-3">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                            <i class="fas fa-award text-xl"></i>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why-us" class="py-20 lg:py-28 bg-gradient-to-b from-light to-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    <i class="fas fa-star ml-2"></i>لماذا تختارنا
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-6">
+                    مميزات تجعلنا <span class="text-primary">الخيار الأول</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    نتميز بتقديم حلول غذائية متكاملة للأبقار تجمع بين الجودة العلمية والخبرة الميدانية
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition border border-gray-100 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">تركيبات علمية دقيقة</h3>
+                    <p class="text-gray-600 leading-relaxed">جميع منتجاتنا مصممة بواسطة خبراء تغذية بيطريين لضمان التوازن الغذائي المثالي لكل مرحلة عمرية من حياة البقرة.</p>
+                </div>
+
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition border border-gray-100 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">مواد خام طبيعية</h3>
+                    <p class="text-gray-600 leading-relaxed">نستخدم فقط أجود أنواع الحبوب والبروتينات النباتية الطبيعية الخالية من أي مواد ضارة أو هرمونات نمو صناعية.</p>
+                </div>
+
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition border border-gray-100 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">زيادة الإنتاجية</h3>
+                    <p class="text-gray-600 leading-relaxed">عملاؤنا يشهدون بزيادة ملحوظة في إنتاج الحليب ومعدلات التسمين خلال أسابيع قليلة من استخدام أعلافنا.</p>
+                </div>
+
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition border border-gray-100 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">إشراف بيطري مستمر</h3>
+                    <p class="text-gray-600 leading-relaxed">فريقنا من الأطباء البيطريين متاح لتقديم الاستشارات الفنية ومساعدة المزارعين في اختيار الأنسب لقطعانهم.</p>
+                </div>
+
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition border border-gray-100 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">توصيل سريع وآمن</h3>
+                    <p class="text-gray-600 leading-relaxed">نمتلك أسطول نقل متخصص يضمن وصول الأعلاف إلى مزارعك في أفضل حالة وبأسرع وقت ممكن.</p>
+                </div>
+
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition border border-gray-100 group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-3xl mb-6 group-hover:bg-primary group-hover:text-white transition">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-dark mb-3">دعم فني على مدار الساعة</h3>
+                    <p class="text-gray-600 leading-relaxed">فريق خدمة العملاء متاح 24/7 للإجابة على استفساراتك وتقديم الدعم الفني اللازم في أي وقت.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 lg:py-28 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    <i class="fas fa-box-open ml-2"></i>منتجاتنا
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-6">
+                    تشكيلة متكاملة من <span class="text-primary">أعلاف الأبقار</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    نقدم مجموعة شاملة من الأعلاف المصممة خصيصًا لتلبية احتياجات الأبقار في جميع مراحل النمو والإنتاج
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="fade-in product-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-gray-100">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="14%.jpg" alt="علف 14% " class="product-img w-full h-full object-cover">
+                        <!-- <div class="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">الأكثر مبيعًا</div> -->
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-3"> باور ميكس 14%</h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">علف باور ميكس 14% هو منتج علفي متكامل ومصنع خصيصاً لدعم إنتاجية الأبقار سواء لإنتاج اللحم أو الحليب.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">طاقة مركّزة</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">بروتين عالي</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">نمو سريع</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            <span>اطلب المنتج</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="fade-in product-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-gray-100">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="16%.jpg" alt="علف أبقار حلاب" class="product-img w-full h-full object-cover">
+                        <!-- <div class="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">متميز</div> -->
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-3">
+                            باور ميكش 16%
+                        </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">علف باور ميكس 16% للأبقار هو علف مركز وفائق الجودة، مصمم خصيصاً للمراحل الإنتاجية التي تتطلب دعماً غذائياً مكثفاً لقطعان التسمين والحلوب.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">إنتاج حليب عالي</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">كالسيوم</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">فيتامينات</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            <span>اطلب المنتج</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="fade-in product-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-gray-100">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="18%.jpg" alt="علف عجول رضع" class="product-img w-full h-full object-cover">
+                        <!-- <div class="absolute top-4 right-4 bg-accent text-white px-3 py-1 rounded-full text-sm font-bold">جديد</div> -->
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-3">باور ميكس 18%</h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">علف باور ميكس 18% للأبقار هو التركيز الأعلى والأقوى في هذه المجموعة، وهو مخصص بشكل أساسي للمراحل العمرية المبكرة (التأسيس) وللأبقار الحلوب عالية الإدرار التي تمر بمرحلة ذروة الإنتاج..</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">سهل الهضم</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">تعزيز المناعة</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">نمو العظام</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            <span>اطلب المنتج</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="fade-in product-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-gray-100">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="19%.jpg" alt="علف أبقار جافة" class="product-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-3"> باور ميكس 19%  </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">علف باور ميكس 19% للأبقار هو التركيبة الأعلى تركيزاً في البروتين الموجهة للأبقار الحلابة فائقة الإنتاج والدرّارة، ويعد خياراً استراتيجياً للمزارع الكبرى لتحقيق أعلى عائد اقتصادي من الحليب.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">توازن معدني</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">صحة عامة</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            <span>اطلب المنتج</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="fade-in product-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-gray-100">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="21%.jpg" alt="مركزات بروتينية" class="product-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-3"> باور ميكس 21% </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">علف باور ميكس 21% للأبقار هو "العلف السوبر الحلاب"، ويمثل قمة التركيزات البروتينية المخصصة للمواشي. يُصنع هذا العلف خصيصاً للمزارع الاحترافية وسلالات الأبقار عالية الإدرار (مثل الهونشتاين والسيمنتال).</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">بروتين 21%</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">فول صويا</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">بذور قطن</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            <span>اطلب المنتج</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- المنتج ال6 -->
+                  <!-- <div class="fade-in product-card bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition border border-gray-100">
+                    <div class="relative overflow-hidden h-60">
+                        <img src="https://image.qwenlm.ai/public_source/735e3668-29dd-48c9-b022-702a3229994c/1bf47c20a-1a1a-4136-8287-1e1abae8279e.png" alt="مركزات بروتينية" class="product-img w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-dark mb-3"> باور ميكس 21% </h3>
+                        <p class="text-gray-600 mb-5 leading-relaxed">علف باور ميكس 21% للأبقار هو "العلف السوبر الحلاب"، ويمثل قمة التركيزات البروتينية المخصصة للمواشي. يُصنع هذا العلف خصيصاً للمزارع الاحترافية وسلالات الأبقار عالية الإدرار (مثل الهونشتاين والسيمنتال).</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">بروتين 21%</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">فول صويا</span>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">بذور قطن</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+                            <span>اطلب المنتج</span>
+                            <i class="fas fa-arrow-left"></i>
+                        </a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="factory-bg py-20 lg:py-28 text-white relative">
+        <div class="container mx-auto px-4 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold mb-4 border border-white/30">
+                    <i class="fas fa-cogs ml-2"></i>مراحل الإنتاج
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                    كيف نصنع <span class="text-accent">أفضل الأعلاف</span>
+                </h2>
+                <p class="text-white/90 text-lg">
+                    نمر بمراحل دقيقة ومراقبة لضمان جودة كل كيس علف يصل إلى مزرعتك
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="fade-in text-center">
+                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-2xl">01</div>
+                    <h3 class="text-xl font-bold mb-3">اختيار المواد الخام</h3>
+                    <p class="text-white/80 leading-relaxed">نختار أجود أنواع الحبوب والبروتينات من مصادر موثوقة ومعتمدة عالميًا.</p>
+                </div>
+
+                <div class="fade-in text-center">
+                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-2xl">02</div>
+                    <h3 class="text-xl font-bold mb-3">التركيب العلمي</h3>
+                    <p class="text-white/80 leading-relaxed">خبراء التغذية يحددون النسب المثالية لكل مكون حسب احتياجات كل مرحلة.</p>
+                </div>
+
+                <div class="fade-in text-center">
+                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-2xl">03</div>
+                    <h3 class="text-xl font-bold mb-3">التصنيع والمعالجة</h3>
+                    <p class="text-white/80 leading-relaxed">نستخدم أحدث خطوط الإنتاج لضمان تجانس الخلطة وسهولة الهضم.</p>
+                </div>
+
+                <div class="fade-in text-center">
+                    <div class="w-20 h-20 bg-accent rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-6 shadow-2xl">04</div>
+                    <h3 class="text-xl font-bold mb-3">مراقبة الجودة</h3>
+                    <p class="text-white/80 leading-relaxed">فحوصات مخبرية دقيقة على كل دفعة قبل التغليف والتوزيع.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-20 lg:py-28 bg-light">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    <i class="fas fa-quote-right ml-2"></i>آراء العملاء
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-6">
+                    ماذا يقول <span class="text-primary">عملاؤنا عنا</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    نفخر بثقة مئات المزارعين والمربين في جميع أنحاء مصر
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
+                    <div class="flex text-accent mb-4 text-lg">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"منذ أن بدأت استخدام علف الحلاب من رشيد، زاد إنتاج الحليب في مزرعتي بنسبة 25%. جودة العلف ممتازة والأبقار تحبه جدًا."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl">أ.م</div>
+                        <div>
+                            <div class="font-bold text-dark">أحمد محمود</div>
+                            <div class="text-sm text-gray-500">مزارع أبقار - الشرقية</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
+                    <div class="flex text-accent mb-4 text-lg">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"علف التسمين رائع! عجولي كسبت وزن بسرعة وبجودة لحم ممتازة. أنصح به كل مربي أبقار يبحث عن نتيجة حقيقية."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl">م.ع</div>
+                        <div>
+                            <div class="font-bold text-dark">محمد عبدالله</div>
+                            <div class="text-sm text-gray-500">مربي أبقار - الدقهلية</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
+                    <div class="flex text-accent mb-4 text-lg">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed mb-6">"خدمة العملاء ممتازة والدعم الفني متواصل. ساعدوني في اختيار العلف المناسب لعجولي الرضيعة والنتيجة مبهرة."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary font-bold text-xl">س.ح</div>
+                        <div>
+                            <div class="font-bold text-dark">سامي حسن</div>
+                            <div class="text-sm text-gray-500">صاحب مزرعة - كفر الشيخ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 lg:py-28 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in">
+                <div class="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-bold mb-4">
+                    <i class="fas fa-envelope ml-2"></i>تواصل معنا
+                </div>
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-dark mb-6">
+                    نحن هنا <span class="text-primary">لخدمتك</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    تواصل معنا للحصول على استشارة مجانية أو لطلب عرض سعر لمنتجاتنا
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-10">
+                <!-- Contact Info -->
+                <div class="lg:col-span-2 fade-in">
+                    <div class="bg-gradient-to-br from-primary to-secondary text-white p-8 rounded-3xl shadow-2xl h-full">
+                        <h3 class="text-2xl font-bold mb-6">معلومات التواصل</h3>
+                        <p class="text-white/90 mb-8 leading-relaxed">فريقنا جاهز للرد على استفساراتك ومساعدتك في اختيار الأعلاف الأنسب لاحتياجات مزرعتك.</p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-white/70 mb-1">رقم الهاتف</div>
+                                    <a href="tel:01000000000" class="font-bold text-lg hover:text-accent transition">01000000000</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-white/70 mb-1">واتساب</div>
+                                    <a href="https://wa.me/201000000000" class="font-bold text-lg hover:text-accent transition">01000000000</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-white/70 mb-1">العنوان</div>
+                                    <div class="font-bold text-lg">مصر - المنطقة الصناعية</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-white/70 mb-1">ساعات العمل</div>
+                                    <div class="font-bold">السبت – الخميس: 8 ص – 6 م</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-xl flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-white/70 mb-1">البريد الإلكتروني</div>
+                                    <a href="mailto:info@rashidfeeds.com" class="font-bold text-lg hover:text-accent transition">info@rashidfeeds.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 mt-8 pt-6 border-t border-white/20">
+                            <a href="#" class="w-10 h-10 bg-white/20 hover:bg-accent rounded-full flex items-center justify-center transition"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 bg-white/20 hover:bg-accent rounded-full flex items-center justify-center transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 bg-white/20 hover:bg-accent rounded-full flex items-center justify-center transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="w-10 h-10 bg-white/20 hover:bg-accent rounded-full flex items-center justify-center transition"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-3 fade-in">
+                    <form id="contact-form" class="bg-light p-8 lg:p-10 rounded-3xl shadow-lg">
+                        <h3 class="text-2xl font-bold text-dark mb-6">أرسل لنا رسالة 🌿</h3>
+
+                        <div class="grid md:grid-cols-2 gap-5 mb-5">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">الاسم الكامل</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" placeholder="أدخل اسمك">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">رقم الهاتف</label>
+                                <input type="tel" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" placeholder="01xxxxxxxxx">
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="block text-gray-700 font-medium mb-2">البريد الإلكتروني</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition" placeholder="example@email.com">
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="block text-gray-700 font-medium mb-2">المنتج المطلوب</label>
+                            <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition bg-white">
+                                <option>علف أبقار تسمين</option>
+                                <option>علف أبقار حلاب</option>
+                                <option>علف عجول رضع</option>
+                                <option>علف أبقار جافة</option>
+                                <option>مركزات بروتينية</option>
+                                <option>أعلاف خشنة معالجة</option>
+                                <option>استشارة عامة</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-gray-700 font-medium mb-2">رسالتك</label>
+                            <textarea rows="4" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition resize-none" placeholder="اكتب تفاصيل طلبك أو استفسارك..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white py-4 rounded-xl font-bold text-lg transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                            <span>إرسال الرسالة</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+
+                        <div id="form-success" class="hidden mt-4 bg-green-100 text-green-700 p-4 rounded-xl text-center font-medium">
+                            <i class="fas fa-check-circle ml-2"></i>تم إرسال رسالتك بنجاح! سنتواصل معك قريبًا.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="logo.jpg" alt="شعار رشيد للأعلاف(rosetta)" class="h-16 w-auto object-contain">
+                    </div>
+                    <p class="text-gray-400 leading-relaxed mb-6">شركة رائدة في تصنيع وتوزيع أعلاف الأبقار عالية الجودة في مصر منذ أكثر من 20 عامًا.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center transition"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">روابط سريعة</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>الرئيسية</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>عن الشركة</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>منتجاتنا</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>آراء العملاء</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">منتجاتنا</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#products" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>علف أبقار تسمين</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>علف أبقار حلاب</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>علف عجول رضع</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>مركزات بروتينية</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-accent transition flex items-center gap-2"><i class="fas fa-chevron-left text-xs"></i>أعلاف خشنة معالجة</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6">تواصل معنا</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-accent mt-1"></i>
+                            <span class="text-gray-400">مصر - المنطقة الصناعية</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-phone text-accent mt-1"></i>
+                            <a href="tel:01000000000" class="text-gray-400 hover:text-accent transition">01000000000</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-envelope text-accent mt-1"></i>
+                            <a href="mailto:info@rashidfeeds.com" class="text-gray-400 hover:text-accent transition">info@rashidfeeds.com</a>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-clock text-accent mt-1"></i>
+                            <span class="text-gray-400">السبت - الخميس: 8 ص - 6 م</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-400 text-sm">جميع الحقوق محفوظة © 2025 — رشيد للأعلاف(rosetta)</p>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-accent transition">سياسة الخصوصية</a>
+                    <a href="#" class="hover:text-accent transition">الشروط والأحكام</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/201000000000" class="fixed bottom-6 left-6 w-14 h-14 bg-[#1E6576] hover:bg-[#257a8e] text-white rounded-full flex items-center justify-center text-2xl shadow-2xl z-40 transition hover:scale-110">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary hover:bg-secondary text-white rounded-full flex items-center justify-center shadow-2xl z-40 transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+            const update = () => {
+                current += step;
+                if (current < target) {
+                    counter.textContent = Math.ceil(current) + '+';
+                    requestAnimationFrame(update);
+                } else {
+                    counter.textContent = target + '+';
+                }
+            };
+            update();
+        };
+
+        // Intersection Observer for fade-in and counters
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('counter') && !entry.target.dataset.animated) {
+                        entry.target.dataset.animated = 'true';
+                        animateCounter(entry.target);
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .counter').forEach(el => observer.observe(el));
+
+        // Back to Top Button
+        const backToTop = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Contact Form
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formSuccess.classList.remove('hidden');
+            contactForm.reset();
+            setTimeout(() => {
+                formSuccess.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
